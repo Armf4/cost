@@ -206,7 +206,7 @@ function calc(){
  const lg=parts.map((p,i)=>[p[0],p[1],i]).sort((a,b)=>b[1]-a[1]);
  $('bb').innerHTML=`<span>รายจ่าย/เดือน <b>${f(allT)}</b></span><span>กำไร (เฉลี่ย) <b class="${sc[1].net<0?'neg':'pos'}">${f(sc[1].net)}</b></span>`;
  const cls=v=>v<0?'neg':'pos';
- $('bar').innerHTML=sc.map(s=>`<div><small>กำไร/เดือน (${s.l})</small><b class="${cls(s.net)}">${f(s.net)}</b></div>`).join('')+`<div><small>คืนทุน (เฉลี่ย)</small><b>${isFinite(sc[1].pay)?f1(sc[1].pay)+' ด.':'ไม่คืนทุน'}</b></div>`;
+ $('bar').innerHTML=`<div><small>รายรับ/เดือน (เฉลี่ย)</small><b>${f(sc[1].rev)}</b></div><div><small>รายจ่าย/เดือน</small><b>${f(allT)}</b></div><div><small>กำไร/เดือน (เฉลี่ย)</small><b class="${cls(sc[1].net)}">${f(sc[1].net)}</b></div><div><small>คืนทุน (เฉลี่ย)</small><b>${isFinite(sc[1].pay)?f1(sc[1].pay)+' ด.':'ไม่คืนทุน'}</b></div>`;
  $('capT').textContent='รวมเงินต้น '+f(cap)+' บาท';
  $('drT').textContent=`คนขับ ${S.drivers.length} คน · รวม ${f1(own)} รอบ/วัน (+ รถเช่า ${f1(rr)}) = ${f1(rounds)} รอบ/วัน`;
  const row=(l,fn,c)=>`<tr${c?' class="t"':''}><td>${l}</td>${sc.map(s=>{const v=fn(s);return`<td class="${typeof v==='number'&&v<0&&c!==2?'n':''}">${typeof v==='number'?f(v):v}</td>`}).join('')}</tr>`;
